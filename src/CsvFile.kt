@@ -1,0 +1,1 @@
+abstract class CsvFile(path: String) : File(path) {}
