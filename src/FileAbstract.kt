@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
 
-abstract class FileAbstract(path: String) {
+abstract class FileAbstract(path: String) : FileInterface{
     private val size: Long
     private val creationTime: FileTime
     private val lastAccessedTime: FileTime
@@ -53,7 +53,4 @@ abstract class FileAbstract(path: String) {
         formatFileTime(lastAccessedTime)
     fun getFilelastModifiedTime(): String =
         formatFileTime(lastModifiedTime)
-
-    abstract fun readContent(): String
-    //abstract fun typeSupported(): Boolean
 }

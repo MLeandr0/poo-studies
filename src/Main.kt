@@ -1,6 +1,5 @@
 fun main() {
     val notes = TextFile("src/files/notes.txt");
-
     val excell = CsvFile("src/files/Salaries.csv")
 
     println("Text File Info:")
