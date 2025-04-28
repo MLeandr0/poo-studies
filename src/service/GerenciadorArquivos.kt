@@ -47,6 +47,7 @@ class GerenciadorArquivos {
     }
 
     private fun criarArquivo(extensao: String) {
+        FileUtils.criarPasta()
         print("Digite o nome do arquivo (sem extensão): ")
         val nome = readlnOrNull() ?: return
         val arquivo = criarInstancia(nome, extensao)
