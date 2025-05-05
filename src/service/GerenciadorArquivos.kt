@@ -2,6 +2,7 @@ package service
 
 import model.*
 import util.FileUtils
+import java.util.concurrent.CancellationException
 
 class GerenciadorArquivos {
 
@@ -10,6 +11,7 @@ class GerenciadorArquivos {
         println("1 - TXT")
         println("2 - CSV")
         println("3 - JSON")
+        println("4 - CANCEL")
         print("Opção: ")
         val tipo = readlnOrNull()?.toIntOrNull()
 
@@ -17,6 +19,7 @@ class GerenciadorArquivos {
             1 -> "txt"
             2 -> "csv"
             3 -> "json"
+            4 -> throw CancellationException("Operação cancelada pelo usuário")
             else -> {
                 println("Tipo inválido.")
                 return

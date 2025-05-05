@@ -19,16 +19,18 @@ abstract class Arquivo(
         }
     }
 
-    override fun ler(): String {
-        val arquivo = File(caminho)
-        if (arquivo.exists()) {
-            val builder = ProcessBuilder("notepad", arquivo.absolutePath)
-            val process = builder.start()
-            process.waitFor()
-            return "Arquivo foi aberto no Bloco de Notas."
-        }
-        return "Arquivo não encontrado."
-    }
+    abstract override fun ler(): String
+
+//    override fun ler(): String {
+//        val arquivo = File(caminho)
+//        if (arquivo.exists()) {
+//            val builder = ProcessBuilder("notepad", arquivo.absolutePath)
+//            val process = builder.start()
+//            process.waitFor()
+//            return "Arquivo foi aberto no Bloco de Notas."
+//        }
+//        return "Arquivo não encontrado."
+//    }
 
     override fun alterar(conteudoNovo: String) {
         val arquivo = File(caminho)
