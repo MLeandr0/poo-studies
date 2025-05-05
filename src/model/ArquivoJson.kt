@@ -43,4 +43,20 @@ class ArquivoJson(nome: String) : Arquivo(nome, "json") {
 
         return builder.toString()
     }
+
+    override fun alterar(conteudoNovo: String) {
+        try {
+            // Validação básica de JSON
+            val trimmed = conteudoNovo.trim()
+            if (!(trimmed.startsWith("{") && trimmed.endsWith("}")) &&
+                !(trimmed.startsWith("[") && trimmed.endsWith("]"))) {
+                throw IllegalArgumentException("JSON deve começar com { ou [ e terminar com } ou ]")
+            }
+
+            File(caminho).writeText(conteudoNovo)
+            println("JSON alterado com sucesso!")
+        } catch (e: Exception) {
+            println("Erro ao alterar JSON: ${e.message}")
+        }
+    }
 }

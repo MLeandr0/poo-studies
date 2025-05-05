@@ -46,4 +46,24 @@ class ArquivoCsv(nome: String) : Arquivo(nome, "csv") {
 
         return "CSV exibido como tabela no terminal."
     }
+
+    override fun alterar(conteudoNovo: String) {
+        try {
+            // Validação básica de CSV
+            val linhas = conteudoNovo.lines()
+            if (linhas.size > 1) {
+                val numColunas = linhas.first().split(",").size
+                linhas.drop(1).forEachIndexed { i, linha ->
+                    if (linha.split(",").size != numColunas) {
+                        throw IllegalArgumentException("Linha ${i+2} tem número diferente de colunas")
+                    }
+                }
+            }
+
+            File(caminho).writeText(conteudoNovo)
+            println("CSV alterado com sucesso!")
+        } catch (e: Exception) {
+            println("Erro ao alterar CSV: ${e.message}")
+        }
+    }
 }

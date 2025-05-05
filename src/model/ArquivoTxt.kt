@@ -24,4 +24,9 @@ class ArquivoTxt(nome: String) : Arquivo(nome, "txt") {
 
         return "Texto exibido com numeração de linhas."
     }
+
+    override fun alterar(conteudoNovo: String) {
+        File(caminho).writeText(conteudoNovo)
+        println("Texto alterado com sucesso!")
+    }
 }
