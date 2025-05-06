@@ -52,4 +52,8 @@ abstract class Arquivo(
             println("Arquivo não encontrado ou erro ao deletar.")
         }
     }
+
+    fun getName(): String {
+        return nome
+    }
 }
